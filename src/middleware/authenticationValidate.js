@@ -19,6 +19,8 @@ export const validateToken = async (req, res, next)=>{
             return res.status(500).send({ msg : "Token Inválido" })
         }
 
+        req.user = decoded
+
         console.log('error',error);
         console.log('decoded', decoded);
         next();

@@ -66,7 +66,7 @@ export const login = async (req, res)=>{
     const isTrue = await bcrypt.compare(password, user.password);
     console.log(isTrue);
     if(isTrue){
-        const token = await createAccessToken(req.body);
+        const token = await createAccessToken({ id: user._id });
         res.cookie("token", token);
         res.status(200).send({  msg : "Login correcto"});
     }else{
